@@ -1,6 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
 <head>
-    <title>My super blog</title>
+    <meta charset="utf-8">
+    <title>Мой первый блог</title>
 </head>
 
 <body>
@@ -10,7 +13,7 @@
     {% for post in posts %}
     <div>
         <p>Дата публикации: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</h2>
+        <h2><a href="#">{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
     <div>
     {% endfor %}
