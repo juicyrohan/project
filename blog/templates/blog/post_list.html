@@ -1,18 +1,21 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
 <head>
-    <title>My super blog</title>
+    <meta charset="utf-8">
+    <title>Мой первый блог</title>
 </head>
 
 <body>
     <div>
-        <h1><a href="/">На главную</a></h1>
+        <h1> <a href="/">На главную</a> </h1>
     </div>
-    {% for post in posts %}
     <div>
+        {% for post in posts %}
         <p>Дата публикации: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</h2>
+        <h2><a href="#">{{ post.title }}</a></h2>
         <p>{{ post.text|linebreaksbr }}</p>
-    <div>
+    </div>
     {% endfor %}
 </body>
 

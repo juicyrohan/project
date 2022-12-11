@@ -3,7 +3,9 @@ from django.db import models
 from django.utils import timezone
 
 class Post(models.Model):
+    """Django data model Post"""
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -13,6 +15,9 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
+    class Meta:
+        verbose_name = 'Запись в блоге'
+        verbose_name_plural = 'Записи в блоге'
     def __str__(self):
         return self.title
 
