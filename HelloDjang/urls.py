@@ -1,4 +1,4 @@
-"""HelloDjango URL Configuration
+"""django_progect URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -14,8 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('', include('blog.urls')),
+    path('api-auth/', include('rest_framework.urls'))
 ]
+
+handler404 = 'blog.views.handler404'

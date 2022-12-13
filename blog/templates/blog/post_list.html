@@ -1,22 +1,28 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+{% extends 'blog/base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Мой первый блог</title>
-</head>
+{% block title %}
+    <title>My super juesy bloh</title>
+{% endblock %}
 
-<body>
-    <div>
-        <h1> <a href="/">На главную</a> </h1>
-    </div>
-    <div>
-        {% for post in posts %}
-        <p>Дата публикации: {{ post.published_date }}</p>
-        <h2><a href="#">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {% if post.published_date %}
+                    <p>Опубликовано: {{ post.published_date }}</p>
+                {% else %}
+                    <p>Не опубликовано</p>
+                {% endif %}
+                <p>Автор: {{ post.author }}</p>
+            </div>
+
+        <!-- <h3><a href="{% url 'post_detail' post.id%}"> {{ post.title }} </a></h3>
+           -->
+           <h3><a href="{{ post.get_absolute_url}}"> {{ post.title }} </a></h3>
+
+            <p>{{ post.text|linebreaksbr }}</p>
+            <p>Комментариев: {{ post.comment.count }}</p>
+            <br>
+        </div>
     {% endfor %}
-</body>
-
-</html>
+{% endblock %}
